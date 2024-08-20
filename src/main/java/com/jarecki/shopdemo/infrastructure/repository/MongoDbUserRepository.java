@@ -3,9 +3,9 @@ package com.jarecki.shopdemo.infrastructure.repository;
 import com.jarecki.shopdemo.domain.model.User;
 import com.jarecki.shopdemo.domain.repository.UserRepository;
 import com.jarecki.shopdemo.infrastructure.adapter.out.UserDb;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -16,7 +16,7 @@ public class MongoDbUserRepository implements UserRepository {
     public MongoDbUserRepository(SpringDataMongoUserRepository userRepository) {this.userRepository = userRepository;}
 
     @Override
-    public Optional<User> findByName(String name) {
+    public List<UserDb> findByName(String name) {
         return userRepository.findByName(name);
     }
 
@@ -28,6 +28,11 @@ public class MongoDbUserRepository implements UserRepository {
     @Override
     public void save(User user) {
         userRepository.save(new UserDb(user.getId(), user.getName()));
+    }
+
+    @Override
+    public List<UserDb> getAll() {
+        return userRepository.findAll();
     }
 
 }

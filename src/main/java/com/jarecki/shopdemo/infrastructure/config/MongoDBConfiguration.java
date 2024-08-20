@@ -12,26 +12,22 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Configuration
-@EnableMongoRepositories("com.jarecki.shopdemo.infrastructure.repository")
 public class MongoDBConfiguration extends AbstractMongoClientConfiguration {
 
     @Value("${spring.data.mongodb.uri}")
     public String mongoUri;
 
+    @Value("${spring.data.mongodb.database}")
+    public String databaseName;
+
     @Override
     protected void configureClientSettings(MongoClientSettings.Builder builder) {
-        // customization hook
         builder.applyConnectionString(new ConnectionString(mongoUri));
     }
 
     @Override
     protected String getDatabaseName() {
-        return "shop-demo";
-    }
-
-    @Override
-    public com.mongodb.client.MongoClient mongoClient() {
-        return super.mongoClient();
+        return databaseName;
     }
 
 }

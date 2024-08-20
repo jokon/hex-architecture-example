@@ -2,10 +2,8 @@ package com.jarecki.shopdemo.application.port;
 
 import com.jarecki.shopdemo.application.response.CreateUserResponse;
 import com.jarecki.shopdemo.domain.model.User;
-import com.jarecki.shopdemo.domain.repository.UserRepository;
 import com.jarecki.shopdemo.domain.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -32,9 +30,11 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<User> findUserByName(@RequestParam("name") String name) {
-        return userService.findUserByName(name).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-
+    public List<User> findUserByName(@RequestParam(value = "name", required = false) String name) {
+        if (name != null) {
+            return userService.findUserByName(name);
+        }
+        return userService.getAll();
     }
 
     @PostMapping
