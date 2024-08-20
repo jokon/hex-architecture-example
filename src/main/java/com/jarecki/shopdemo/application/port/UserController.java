@@ -26,9 +26,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> findUserById(@PathVariable UUID id) {
         return userService.findUserById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<User> findUserByName(@RequestParam("name") String name) {
+        return userService.findUserByName(name).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+
     }
 
     @PostMapping
