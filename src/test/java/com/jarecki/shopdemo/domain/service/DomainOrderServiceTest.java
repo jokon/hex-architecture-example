@@ -1,9 +1,7 @@
 package com.jarecki.shopdemo.domain.service;
 
-import com.jarecki.shopdemo.domain.model.Basket;
-import com.jarecki.shopdemo.domain.model.BasketItem;
-import com.jarecki.shopdemo.domain.model.Order;
-import com.jarecki.shopdemo.domain.model.OrderItem;
+import com.jarecki.shopdemo.domain.model.Cart;
+import com.jarecki.shopdemo.domain.model.CartItem;
 import com.jarecki.shopdemo.domain.model.Product;
 import com.jarecki.shopdemo.domain.model.User;
 import com.jarecki.shopdemo.domain.repository.OrderRepository;
@@ -40,11 +38,11 @@ class DomainOrderServiceTest {
         BigDecimal productPrice = new BigDecimal("10.23");
         User user = new User(UUID.randomUUID(), "John Doe");
         Product product = new Product(UUID.randomUUID(), productName, productPrice, 100);
-        BasketItem basketItem = new BasketItem(UUID.randomUUID(), product, product.getPrice(), 2);
-        Basket basket = new Basket(UUID.randomUUID(), List.of(basketItem), user);
+        CartItem cartItem = new CartItem(UUID.randomUUID(), product, product.getPrice(), 2);
+        Cart cart = new Cart(UUID.randomUUID(), List.of(cartItem), user);
 
         //when
-        domainOrderService.createOrder(user, basket);
+        domainOrderService.createOrder(user, cart);
 
         //then
         ArgumentCaptor<OrderDb> capturedOrder = ArgumentCaptor.forClass(OrderDb.class);

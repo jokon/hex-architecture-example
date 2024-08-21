@@ -3,7 +3,7 @@ package com.jarecki.shopdemo.domain.model;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record BasketItem(UUID id, Product product, BigDecimal unitPrice, int quantity) {
+public record CartItem(UUID id, Product product, BigDecimal unitPrice, int quantity) {
 
     public BigDecimal getUnitPrice() {
         return unitPrice;

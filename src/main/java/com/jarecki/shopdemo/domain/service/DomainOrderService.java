@@ -1,6 +1,6 @@
 package com.jarecki.shopdemo.domain.service;
 
-import com.jarecki.shopdemo.domain.model.Basket;
+import com.jarecki.shopdemo.domain.model.Cart;
 import com.jarecki.shopdemo.domain.model.Order;
 import com.jarecki.shopdemo.domain.model.OrderItem;
 import com.jarecki.shopdemo.domain.model.User;
@@ -19,10 +19,10 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public UUID createOrder(User user, Basket basket) {
-        List<OrderItem> orderItems = basket.getItems().stream()
-                .map(basketItem -> new OrderItem(UUID.randomUUID(), basketItem.getProduct(), basketItem.quantity(),
-                        basketItem.getUnitPrice()))
+    public UUID createOrder(User user, Cart cart) {
+        List<OrderItem> orderItems = cart.getItems().stream()
+                .map(cartItem -> new OrderItem(UUID.randomUUID(), cartItem.getProduct(), cartItem.quantity(),
+                        cartItem.getUnitPrice()))
                 .toList();
         Order order = new Order(UUID.randomUUID(), user, orderItems);
 
