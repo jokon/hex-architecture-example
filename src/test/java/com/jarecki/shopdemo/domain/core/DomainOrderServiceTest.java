@@ -1,10 +1,10 @@
-package com.jarecki.shopdemo.domain.service;
+package com.jarecki.shopdemo.domain.core;
 
 import com.jarecki.shopdemo.domain.model.Cart;
 import com.jarecki.shopdemo.domain.model.CartItem;
 import com.jarecki.shopdemo.domain.model.Product;
 import com.jarecki.shopdemo.domain.model.User;
-import com.jarecki.shopdemo.domain.repository.OrderRepository;
+import com.jarecki.shopdemo.domain.ports.out.OrderRepository;
 import com.jarecki.shopdemo.infrastructure.adapter.out.OrderDb;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,13 +21,13 @@ import static org.mockito.Mockito.verify;
 
 class DomainOrderServiceTest {
 
-    private DomainOrderService domainOrderService;
+    private DomainOrderFacade domainOrderService;
     private OrderRepository orderRepository;
 
     @BeforeEach
     void setUp() {
         orderRepository = mock(OrderRepository.class);
-        domainOrderService = new DomainOrderService(orderRepository);
+        domainOrderService = new DomainOrderFacade(orderRepository);
     }
 
     @Test

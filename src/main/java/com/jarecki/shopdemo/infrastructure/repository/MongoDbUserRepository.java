@@ -1,7 +1,7 @@
 package com.jarecki.shopdemo.infrastructure.repository;
 
 import com.jarecki.shopdemo.domain.model.User;
-import com.jarecki.shopdemo.domain.repository.UserRepository;
+import com.jarecki.shopdemo.domain.ports.out.UserRepository;
 import com.jarecki.shopdemo.infrastructure.adapter.out.UserDb;
 import org.springframework.stereotype.Component;
 

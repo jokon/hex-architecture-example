@@ -1,6 +1,5 @@
-package com.jarecki.shopdemo.domain.repository;
+package com.jarecki.shopdemo.domain.ports.out;
 
-import com.jarecki.shopdemo.domain.model.Order;
 import com.jarecki.shopdemo.infrastructure.adapter.out.OrderDb;
 
 import java.util.Optional;

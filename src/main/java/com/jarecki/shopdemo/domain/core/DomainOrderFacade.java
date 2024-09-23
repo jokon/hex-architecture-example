@@ -1,20 +1,20 @@
-package com.jarecki.shopdemo.domain.service;
+package com.jarecki.shopdemo.domain.core;
 
 import com.jarecki.shopdemo.domain.model.Cart;
 import com.jarecki.shopdemo.domain.model.Order;
 import com.jarecki.shopdemo.domain.model.OrderItem;
 import com.jarecki.shopdemo.domain.model.User;
-import com.jarecki.shopdemo.domain.repository.OrderRepository;
+import com.jarecki.shopdemo.domain.ports.out.OrderRepository;
 import com.jarecki.shopdemo.infrastructure.adapter.out.OrderDb;
 
 import java.util.List;
 import java.util.UUID;
 
-public class DomainOrderService implements OrderService {
+public class DomainOrderFacade implements OrderFacade {
 
     private final OrderRepository orderRepository;
 
-    public DomainOrderService(OrderRepository orderRepository) {
+    public DomainOrderFacade(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 

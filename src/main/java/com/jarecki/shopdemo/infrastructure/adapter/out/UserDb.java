@@ -15,7 +15,6 @@ public class UserDb {
     @Id
     private UUID id;
 
-
     private String name;
 
     public UserDb(UUID id, String name) {

@@ -1,7 +1,6 @@
 package com.jarecki.shopdemo.infrastructure.repository;
 
-import com.jarecki.shopdemo.domain.model.Order;
-import com.jarecki.shopdemo.domain.repository.OrderRepository;
+import com.jarecki.shopdemo.domain.ports.out.OrderRepository;
 import com.jarecki.shopdemo.infrastructure.adapter.out.OrderDb;
 import org.springframework.stereotype.Component;
 
